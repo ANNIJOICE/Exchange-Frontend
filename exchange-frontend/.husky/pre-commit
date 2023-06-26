@@ -1,0 +1,11 @@
+#!/usr/bin/env sh
+. "$(dirname -- "$0")/_/husky.sh"
+
+# Check if the commit is for the frontend project
+if git diff --name-only --cached | grep -q '^exchange-frontend/'; then
+  # Run pre-commit hooks for the frontend project
+  cd exchange-frontend && npx --no-install lint-staged  
+  exit $?
+fi
+
+exit 0
