@@ -77,9 +77,15 @@
     "configurations": {
       "production": {
         "browserTarget": "client:build:production"
+      },
+      "testin": {
+        "browserTarget": "client:build:testin"
+      },
+      "development": {
+        "browserTarget": "client:build:development"
       }
     },
-    "defaultConfiguration": "production"
+    "defaultConfiguration": "development"
   },
   "extract-i18n": {
     "executor": "@angular-devkit/build-angular:extract-i18n",
