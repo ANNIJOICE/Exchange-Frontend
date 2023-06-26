@@ -1,0 +1,184 @@
+{
+  "root": true,
+  "ignorePatterns": ["**/*"],
+  "plugins": [
+    "@nrwl/nx",
+    "@typescript-eslint",
+    "@typescript-eslint/tslint",
+    "prettier",
+    "simple-import-sort",
+    "sort-keys-fix",
+    "unused-imports"
+  ],
+  "overrides": [
+    {
+      "files": ["*.ts", "*.tsx", "*.js", "*.jsx"],
+      "rules": {
+        "@nrwl/nx/enforce-module-boundaries": [
+          "error",
+          {
+            "enforceBuildableLibDependency": true,
+            "allow": [],
+            "depConstraints": [
+              {
+                "sourceTag": "*",
+                "onlyDependOnLibsWithTags": ["*"]
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "files": ["*.ts", "*.tsx"],
+      "extends": ["plugin:@nrwl/nx/typescript"],
+      "rules": {
+        "prefer-arrow-callback": [
+          "error",
+          {
+            "allowNamedFunctions": true
+          }
+        ],
+        "semi": [1, "always"],
+        "indent": ["error", 2, { "SwitchCase": 1 }],
+        "brace-style": ["error", "1tbs", { "allowSingleLine": false }],
+        "arrow-spacing": "error",
+        "arrow-parens": "error",
+        "callback-return": "error",
+        "eol-last": ["error", "always"],
+        "newline-per-chained-call": "error",
+        "key-spacing": [
+          2,
+          {
+            "singleLine": {
+              "beforeColon": false,
+              "afterColon": true
+            },
+            "multiLine": {
+              "beforeColon": false,
+              "afterColon": true
+            }
+          }
+        ],
+        "object-curly-spacing": [
+          "error",
+          "always",
+          {
+            "arraysInObjects": true,
+            "objectsInObjects": true
+          }
+        ],
+        "space-infix-ops": "error",
+        "capitalized-comments": "error",
+        "comma-spacing": "error",
+        "complexity": "error",
+        "strict": "error",
+        "simple-import-sort/imports": "error",
+        "simple-import-sort/exports": "error",
+        "prefer-template": "error",
+        "prefer-const": "error",
+        "object-shorthand": "error",
+        "prefer-spread": "error",
+        "no-var": "error",
+        "no-unused-vars": "off",
+        "unused-imports/no-unused-imports": "error",
+        "unused-imports/no-unused-vars": [
+          "warn",
+          {
+            "vars": "all",
+            "varsIgnorePattern": "^_",
+            "args": "after-used",
+            "argsIgnorePattern": "^_"
+          }
+        ],
+        "block-spacing": "error",
+        "@typescript-eslint/tslint/config": [
+          "warn",
+          {
+            "rules": {
+              "typedef": [
+                true,
+                "variable-declaration",
+                "variable-declaration-ignore-function",
+                "parameter",
+                "arrow-parameter"
+              ]
+            }
+          }
+        ],
+        "spaced-comment": "error",
+        "multiline-comment-style": "error",
+        "import/no-default-export": "error", // Enforcing Named Exports,
+        "@typescript-eslint/explicit-function-return-type": ["error"], // Function Return Type
+        "@typescript-eslint/no-inferrable-types": ["on"],
+        "@typescript-eslint/type-annotation-spacing": "warn",
+        "no-else-return": ["error", { "allowElseIf": false }],
+        "space-before-blocks": "error",
+        "keyword-spacing": ["error", { "after": true, "before": true }],
+        "sort-keys": "error",
+        "sort-keys-fix/sort-keys-fix": "warn",
+        "lines-around-comment": "error",
+        "quotes": ["error", "single", { "allowTemplateLiterals": true }],
+        "jsx-quotes": ["error", "prefer-double"],
+        "@typescript-eslint/lines-between-class-members": ["error"],
+        "no-trailing-spaces": [
+          "error",
+          { "skipBlankLines": false, "ignoreComments": false }
+        ],
+        "padding-line-between-statements": [
+          "error",
+          {
+            "blankLine": "always",
+            "prev": ["const", "let", "var"],
+            "next": "*"
+          },
+          {
+            "blankLine": "never",
+            "prev": ["const", "let", "var"],
+            "next": ["const", "let", "var"]
+          },
+          {
+            "blankLine": "always",
+            "prev": [
+              "if",
+              "switch",
+              "for",
+              "export",
+              "while",
+              "do",
+              "try",
+              "function",
+              "block-like",
+              "block",
+              "iife"
+            ],
+            "next": "*"
+          },
+          {
+            "blankLine": "always",
+            "prev": "*",
+            "next": [
+              "if",
+              "switch",
+              "for",
+              "export",
+              "while",
+              "do",
+              "try",
+              "function",
+              "block-like",
+              "block",
+              "iife"
+            ]
+          },
+          { "blankLine": "always", "prev": "*", "next": ["return"] }
+        ]
+      }
+    },
+    {
+      "files": ["*.js", "*.jsx"],
+      "extends": ["plugin:@nrwl/nx/javascript"],
+      "rules": {}
+    }
+  ]
+}
